@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import Enum, IntEnum
 
 
-class CardRank (Enum):
+class CardRank (IntEnum):
     two = 2
     three = 3
     four = 4
