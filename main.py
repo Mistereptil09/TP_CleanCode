@@ -2,6 +2,9 @@ from Model import Card, CardRank
 
 
 def check_score(cards : list[Card]) -> int:
+    if is_color(cards):
+        return 45
+
     if is_straight(cards):
         return 40
 
@@ -34,3 +37,10 @@ def is_brelan(cards: list[Card]) -> bool:
         if count == 3:
             return True
     return False
+
+def is_color(cards: list[Card]) -> bool:
+    color = cards[0].suit.value
+    for card in cards:
+        if card.suit.value != color:
+            return False
+    return True
