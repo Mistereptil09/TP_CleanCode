@@ -9,9 +9,28 @@ class TestPoker:
     @pytest.mark.parametrize('hand', [[
         Card(CardRank.one, CardSuit.Diamonds),
         Card(CardRank.one, CardSuit.Diamonds),
-        Card(CardRank.one, CardSuit.Diamonds),
-        Card(CardRank.one, CardSuit.Diamonds),
+        Card(CardRank.three, CardSuit.Diamonds),
+        Card(CardRank.two, CardSuit.Diamonds),
         Card(CardRank.nine, CardSuit.Diamonds),
     ]])
     def test_high_card(self, hand):
         assert(check_score(hand) == CardRank.nine.value)
+
+    @pytest.mark.parametrize('hand', [
+        [
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.two, CardSuit.Diamonds),
+            Card(CardRank.nine, CardSuit.Diamonds),
+        ],
+        [
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+            Card(CardRank.one, CardSuit.Diamonds),
+        ]
+    ])
+    def test_brelan(self, hand):
+        assert (check_score(hand) == 30)
