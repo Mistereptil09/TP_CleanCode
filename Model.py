@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class CardRank (Enum):
-    one = 1
     two = 2
     three = 3
     four = 4
@@ -13,9 +12,9 @@ class CardRank (Enum):
     nine = 9
     ten = 10
     valet = 11
-    dame = 12
-    queen = 13
-    king = 14
+    queen = 12
+    king = 13
+    As = 14
 
 class CardSuit(Enum):
     Heart = 1
