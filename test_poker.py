@@ -72,3 +72,22 @@ class TestPoker:
     ])
     def test_suite(self, hand):
         assert (check_score(hand) == 45)
+
+    @pytest.mark.parametrize('hand', [
+        [
+            Card(CardRank.two, CardSuit.Diamonds),
+            Card(CardRank.two, CardSuit.Clubs),
+            Card(CardRank.two, CardSuit.Heart),
+            Card(CardRank.three, CardSuit.Spades),
+            Card(CardRank.three, CardSuit.Diamonds),
+        ],
+        [
+            Card(CardRank.king, CardSuit.Spades),
+            Card(CardRank.king, CardSuit.Diamonds),
+            Card(CardRank.king, CardSuit.Heart),
+            Card(CardRank.four, CardSuit.Spades),
+            Card(CardRank.four, CardSuit.Diamonds),
+        ],
+    ])
+    def test_brelan(self, hand):
+        assert (check_score(hand) == 50)

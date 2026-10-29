@@ -2,6 +2,9 @@ from Model import Card, CardRank
 
 
 def check_score(cards : list[Card]) -> int:
+    if is_full(cards):
+        return 50
+
     if is_color(cards):
         return 45
 
@@ -44,3 +47,20 @@ def is_color(cards: list[Card]) -> bool:
         if card.suit.value != color:
             return False
     return True
+
+def is_full(cards: list[Card]) -> bool:
+    counts: dict[CardRank, int] = {}
+    for card in cards:
+        counts[card.rank] = counts.get(card.rank, 0) + 1
+
+    three_kind: bool = False
+    two_kind: bool = False
+    for count in counts.values():
+        if count == 3:
+            three_kind = True
+        elif count == 2:
+            two_kind = True
+
+    if two_kind and three_kind:
+        return True
+    return False
